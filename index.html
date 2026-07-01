@@ -856,10 +856,12 @@ nav a.active::after {
   max-width: 840px;
   margin: 0 auto 56px;
 }
+.service-main-card-wide { grid-column: span 2; }
 .service-main-card {
   background: var(--dark);
   padding: 35px 31px;
   position: relative;
+  min-width: 0;
   overflow: hidden;
   transition: var(--transition);
 }
@@ -1079,6 +1081,13 @@ nav a.active::after {
   content: '+';
   color: var(--gold);
   font-weight: 700;
+}
+.services-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 60px;
 }
 
 /* -------------------------------------------------
@@ -1485,6 +1494,7 @@ footer {
   .about-story, .about-values, .contact-main { padding: 60px 24px; }
 
   .services-grid, .services-main-grid { grid-template-columns: 1fr; }
+  .service-main-card-wide { grid-column: auto; }
   .addons-grid, .addon-pricing-grid { grid-template-columns: 1fr 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1494,12 +1504,81 @@ footer {
   .footer-bottom { flex-direction: column; text-align: center; }
   .page-hero { padding: 90px 24px 30px; }
   .contact-form-wrap { padding: 32px 24px; }
+
+  .club-pricing-wrap { overflow: visible; background: transparent; border: 0; }
+  .club-pricing-table { display: block; min-width: 0; background: transparent; }
+  .club-pricing-table thead { display: none; }
+  .club-pricing-table tbody {
+    display: grid;
+    gap: 14px;
+  }
+  .club-pricing-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 20px;
+    background: var(--dark);
+    border: 1px solid rgba(var(--gold-rgb),0.18);
+  }
+  .club-pricing-table tr::before {
+    content: attr(data-mobile-title);
+    grid-column: 1 / -1;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(var(--gold-rgb),0.18);
+  }
+  .club-pricing-table td.club-package,
+  .club-pricing-table td.club-service-type {
+    display: none;
+  }
+  .club-pricing-table td[data-label] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+  .club-pricing-table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-grey);
+  }
+  .club-pricing-table tr:hover td { background: transparent; }
+  .club-pricing-table .price-val { font-size: 1.05rem; }
+
+  .services-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .services-actions .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 !important;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 2.2rem; }
   .hero-cta { flex-direction: column; }
   .section-title { font-size: 1.8rem; }
+  .page-hero h1 { font-size: 2.1rem; line-height: 1.15; }
+  .services-main { padding-left: 18px; padding-right: 18px; }
+  .service-main-card { padding: 28px 22px; }
+  .service-main-title { font-size: 1.55rem; }
+  .club-pricing-table tr { grid-template-columns: 1fr; padding: 18px; }
+  .addon-pricing-item { padding: 20px; gap: 16px; }
+  .addon-pricing-name { min-width: 0; }
+  .addon-pricing-price { flex-shrink: 0; }
+  .pricing-notes { padding: 28px 22px; }
   .addons-grid, .addon-pricing-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .floating-book { display: none; }
@@ -1755,7 +1834,7 @@ footer {
         </ul>
         <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
       </div>
-      <div class="service-main-card fade-in fade-in-delay-3" style="grid-column: span 2;">
+      <div class="service-main-card service-main-card-wide fade-in fade-in-delay-3">
         <span class="service-badge">Deluxe</span>
         <h3 class="service-main-title">Deluxe Detail</h3>
         <div class="service-main-price">Car: $140 · SUV &amp; Pickup: $160 · Includes Premium Finish</div>
@@ -1794,44 +1873,44 @@ footer {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="service-name package-group" rowspan="2">Basic</td>
+            <tr data-mobile-title="Basic · Interior Cleaning">
+              <td class="service-name package-group club-package" rowspan="2">Basic</td>
               <td class="service-name club-service-type">Int. Cleaning</td>
-              <td><span class="price-val">$40.00</span></td>
-              <td><span class="price-val">$70.00</span></td>
-              <td><span class="price-val">$45.00</span></td>
-              <td><span class="price-val">$80.00</span></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$40.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$70.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$45.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$80.00</span></td>
             </tr>
-            <tr>
+            <tr data-mobile-title="Basic · Exterior Wash">
               <td class="service-name club-service-type">Ext. Wash</td>
-              <td><span class="price-val">$20.00</span></td>
-              <td><span class="price-val">$35.00</span></td>
-              <td><span class="price-val">$25.00</span></td>
-              <td><span class="price-val">$45.00</span></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$20.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$35.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$25.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$45.00</span></td>
             </tr>
-            <tr>
-              <td class="service-name">Standard</td>
-              <td></td>
-              <td><span class="price-val">$50.00</span></td>
-              <td><span class="price-val">$95.00</span></td>
-              <td><span class="price-val">$60.00</span></td>
-              <td><span class="price-val">$110.00</span></td>
+            <tr data-mobile-title="Standard">
+              <td class="service-name club-package">Standard</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$50.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$95.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$60.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$110.00</span></td>
             </tr>
-            <tr>
-              <td class="service-name">Premium</td>
-              <td></td>
-              <td><span class="price-val">$60.00</span></td>
-              <td><span class="price-val">$110.00</span></td>
-              <td><span class="price-val">$68.00</span></td>
-              <td><span class="price-val">$130.00</span></td>
+            <tr data-mobile-title="Premium">
+              <td class="service-name club-package">Premium</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$60.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$110.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$68.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$130.00</span></td>
             </tr>
-            <tr>
-              <td class="service-name">Deluxe</td>
-              <td></td>
-              <td><span class="price-val">$125.00</span></td>
-              <td><span class="price-val">$240.00</span></td>
-              <td><span class="price-val">$145.00</span></td>
-              <td><span class="price-val">$275.00</span></td>
+            <tr data-mobile-title="Deluxe">
+              <td class="service-name club-package">Deluxe</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$125.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$240.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$145.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$275.00</span></td>
             </tr>
           </tbody>
         </table>
@@ -1871,9 +1950,9 @@ footer {
       </ul>
     </div>
 
-    <div style="text-align:center;margin-top:60px;" class="fade-in">
+    <div class="services-actions fade-in">
       <a class="btn btn-primary" onclick="showPage('booking')">Book Your Service</a>
-      <a class="btn btn-outline" onclick="showPage('contact')" style="margin-left:16px;">Request a Quote</a>
+      <a class="btn btn-outline" onclick="showPage('contact')">Request a Quote</a>
     </div>
   </div>
 
