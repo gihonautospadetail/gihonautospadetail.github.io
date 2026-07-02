@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gihon Auto Spa & Detail - professional mobile car care in Barbados for busy vehicle owners. Quality. Precision. Perfection.">
+<title>Gihon Auto Spa & Detail | Quality. Precision. Perfection.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ─── PAGE NAVIGATION ───
+window.showPage = function(pageName) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  var target = document.getElementById('page-' + pageName);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateNav(pageName);
+    setTimeout(initAnimations, 100);
+  }
+};
+
+
+function updateNav(pageName) {
+  document.querySelectorAll('#main-nav a[data-page]').forEach(function(a) {
+    a.classList.toggle('active', a.dataset.page === pageName);
+  });
+}
+
+// ─── MOBILE MENU ───
+window.toggleMenu = function() {
+  var menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+};
+window.closeMenu = function() {
+  document.getElementById('mobile-menu').classList.remove('open');
+};
+
+
+// ─── CONTACT FORM ───
+window.handleForm = function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var successMessage = document.getElementById('form-success');
+  var errorMessage = document.getElementById('form-error');
+  var submitButton = form.querySelector('button[type="submit"]');
+  var originalButtonText = submitButton.textContent;
+
+  successMessage.style.display = 'none';
+  errorMessage.style.display = 'none';
+
+  if (!window.emailjs) {
+    errorMessage.style.display = 'block';
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+
+  var customerName = form.querySelector('[name="from_name"]').value;
+  var customerPhone = form.querySelector('[name="phone"]').value;
+  var customerEmail = form.querySelector('[name="reply_to"]').value;
+  var selectedService = form.querySelector('[name="service_interested"]').value;
+  var customerMessage = form.querySelector('[name="message"]').value;
+
+  var templateParams = {
+    from_name: customerName,
+    name: customerName,
+    user_name: customerName,
+    phone: customerPhone,
+    contact_number: customerPhone,
+    reply_to: customerEmail,
+    from_email: customerEmail,
+    user_email: customerEmail,
+    email: customerEmail,
+    service_interested: selectedService,
+    service: selectedService,
+    message: customerMessage,
+    to_email: 'gihonautospadetail@gmail.com'
+  };
+
+  emailjs.send('Gihon Auto Spa & Detail', 'template_9rzlpna', templateParams, {
+    publicKey: 'ZvjBIMVbHkXLnjJ9T'
+  }).then(function() {
+    successMessage.style.display = 'block';
+    form.reset();
+    setTimeout(function() { successMessage.style.display = 'none'; }, 5000);
+  }).catch(function() {
+    errorMessage.style.display = 'block';
+  }).finally(function() {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  });
+};
+
+function initAnimations() {
+  var els = document.querySelectorAll('.page.active .fade-in:not(.visible)');
+  if (!els.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { observer.observe(el); });
+}
+
+// ─── INIT ON DOM READY ───
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#page-gallery .filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var selectedFilter = btn.getAttribute('data-filter');
+      document.querySelectorAll('#page-gallery .filter-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      document.querySelectorAll('#page-gallery .gallery-item').forEach(function(item) {
+        item.hidden = selectedFilter !== 'all' && item.getAttribute('data-category') !== selectedFilter;
+      });
+    });
+  });
+  initAnimations();
+  setTimeout(function() {
+    document.querySelectorAll('#page-home .fade-in').forEach(function(el, i) {
+      setTimeout(function() { el.classList.add('visible'); }, i * 80);
+    });
+  }, 300);
+});
+
+window.addEventListener('scroll', initAnimations, { passive: true });
+</script>
+<style>
+:root {
+  --black: #000010;
+  --off-black: #001030;
+  --dark: #001430;
+  --dark-mid: #002050;
+  --mid: #173D6E;
+  --grey: #617E96;
+  --light-grey: #C4C8D0;
+  --silver: #D0D0D0;
+  --off-white: #E8E8E8;
+  --white: #FFFFFF;
+  --navy: #001030;
+  --deep-blue: #002050;
+  --blue: #0070C8;
+  --cyan: #00A0E8;
+  --cyan-light: #26ADE3;
+  --gold: #E0B850;
+  --gold-light: #E0BC54;
+  --gold-dark: #784810;
+  --black-rgb: 0,0,16;
+  --navy-rgb: 0,16,48;
+  --deep-blue-rgb: 0,32,80;
+  --blue-rgb: 0,112,200;
+  --cyan-rgb: 0,160,232;
+  --gold-rgb: 224,184,80;
+  --gold-dark-rgb: 120,72,16;
+  --white-rgb: 255,255,255;
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --shadow: 0 20px 60px rgba(var(--black-rgb),0.46);
+  --shadow-sm: 0 8px 30px rgba(var(--black-rgb),0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--off-white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ─── PAGE SYSTEM ─── */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ─── HEADER ─── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--transition);
+  background: rgba(var(--black-rgb),0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.15);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.logo-img {
+  height: 81px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.logo-main {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+.logo-sub {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+nav { display: flex; align-items: center; gap: 8px; }
+nav a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--silver);
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+nav a:hover, nav a.active { color: var(--gold); }
+nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 20px; height: 1px;
+  background: var(--gold);
+}
+.btn-book-nav {
+  background: var(--gold);
+  color: var(--black) !important;
+  padding: 9px 20px !important;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+  transition: var(--transition);
+}
+.btn-book-nav:hover {
+  background: var(--gold-light) !important;
+  color: var(--black) !important;
+}
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--gold);
+  transition: var(--transition);
+  display: block;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px; left: 0; right: 0;
+  background: rgba(var(--black-rgb),0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.2);
+  z-index: 999;
+  padding: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  text-decoration: none;
+  padding: 12px 40px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .btn-book-mobile {
+  background: var(--gold);
+  color: var(--black) !important;
+  margin: 12px 40px 8px;
+  width: calc(100% - 80px);
+  border-radius: 2px;
+  font-weight: 700 !important;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  border-radius: 2px;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(var(--gold-rgb),0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(var(--white-rgb),0.4);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--gold);
+  border: 1px solid rgba(var(--gold-rgb),0.3);
+}
+.btn-dark:hover {
+  background: var(--dark-mid);
+  border-color: var(--gold);
+}
+
+/* ─── GOLD LINE ─── */
+.gold-line {
+  width: 50px; height: 1px;
+  background: var(--gold);
+  margin: 0 auto 20px;
+}
+.gold-line-left {
+  width: 50px; height: 1px;
+  background: var(--gold);
+  margin: 0 0 20px;
+}
+
+/* ─── SECTION LABELS ─── */
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ─── SECTION HEADINGS ─── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.section-subtitle {
+  font-size: 0.88rem;
+  color: var(--light-grey);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+/* ─── FLOATING BUTTONS ─── */
+.floating-wa {
+  position: fixed;
+  bottom: 100px; right: 28px;
+  width: 56px; height: 56px;
+  background: var(--cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(var(--cyan-rgb),0.35);
+  z-index: 900;
+  text-decoration: none;
+  transition: var(--transition);
+  animation: floatPulse 3s ease-in-out infinite;
+}
+.floating-wa:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(var(--cyan-rgb),0.5); }
+.floating-wa svg { width: 28px; height: 28px; fill: var(--white); }
+
+.floating-book {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: 2px;
+  z-index: 900;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(var(--gold-rgb),0.35);
+  transition: var(--transition);
+}
+.floating-book:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+@keyframes floatPulse {
+  0%, 100% { box-shadow: 0 8px 30px rgba(var(--cyan-rgb),0.35); }
+  50% { box-shadow: 0 8px 50px rgba(var(--cyan-rgb),0.6); }
+}
+
+/* ─────────────────────────────────────
+   PAGE 1: HOMEPAGE
+───────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(135deg, rgba(var(--black-rgb),0.88) 0%, rgba(var(--deep-blue-rgb),0.78) 50%, rgba(var(--black-rgb),0.92) 100%),
+    url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1800&q=80') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--black));
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px;
+  max-width: 760px;
+  animation: heroIn 1.2s ease forwards;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--gold);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 1rem;
+  color: rgba(var(--white-rgb),0.75);
+  margin-bottom: 44px;
+  max-width: 480px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute;
+  bottom: 40px; left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  animation: fadeInUp 2s 1s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+}
+.hero-scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+}
+.hero-scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  writing-mode: vertical-lr;
+}
+
+/* WHY CHOOSE US */
+.why-section {
+  padding: 100px 60px;
+  background: var(--off-black);
+  position: relative;
+}
+.why-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.why-header { text-align: center; margin-bottom: 70px; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.why-card {
+  background: var(--dark);
+  padding: 50px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--gold);
+  transition: height 0.4s ease;
+}
+.why-card:hover::before { height: 100%; }
+.why-card:hover { background: var(--dark-mid); transform: translateY(-4px); }
+.why-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(var(--gold-rgb),0.08);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.why-icon {
+  width: 44px; height: 44px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+.why-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.why-text { font-size: 0.82rem; color: var(--light-grey); line-height: 1.8; }
+
+/* SERVICES PREVIEW */
+.services-preview {
+  padding: 100px 60px;
+  background: var(--black);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 60px auto 0;
+}
+.service-card {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.service-card-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s ease;
+}
+.service-card:hover .service-card-img { transform: scale(1.08); }
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(var(--black-rgb),0.9) 0%, rgba(var(--black-rgb),0.3) 60%, transparent 100%);
+  transition: var(--transition);
+}
+.service-card:hover .service-card-overlay {
+  background: linear-gradient(to top, rgba(var(--deep-blue-rgb),0.95) 0%, rgba(var(--deep-blue-rgb),0.5) 60%, transparent 100%);
+}
+.service-card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px;
+}
+.service-card-price {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.service-card-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.service-card-desc { font-size: 0.78rem; color: rgba(var(--white-rgb),0.7); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.service-card:hover .service-card-desc { max-height: 80px; }
+
+/* BEFORE AFTER */
+.before-after {
+  padding: 100px 60px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.before-after::before {
+  content: 'TRANSFORM';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(60px, 12vw, 120px);
+  font-weight: 700;
+  color: rgba(var(--white-rgb),0.02);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.ba-header { text-align: center; margin-bottom: 60px; }
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ba-item { position: relative; }
+.ba-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.ba-img {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.ba-img-label {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  background: rgba(var(--black-rgb),0.7);
+  color: var(--gold);
+}
+.ba-caption { font-size: 0.78rem; color: var(--light-grey); text-align: center; }
+
+/* TESTIMONIALS PREVIEW */
+.testimonials-preview {
+  padding: 100px 60px;
+  background: var(--off-black);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 60px auto 0;
+}
+.testimonial-card {
+  background: var(--dark);
+  padding: 44px 36px;
+  position: relative;
+  transition: var(--transition);
+}
+.testimonial-card:hover { background: var(--dark-mid); transform: translateY(-4px); }
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.3;
+  line-height: 0.6;
+  margin-bottom: 20px;
+  display: block;
+}
+.testimonial-text {
+  font-size: 0.9rem;
+  color: rgba(var(--white-rgb),0.8);
+  line-height: 1.9;
+  margin-bottom: 28px;
+  font-style: italic;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+.testimonial-author {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.testimonial-role { font-size: 0.7rem; color: var(--gold); margin-top: 4px; }
+
+/* BOOKING CTA */
+.booking-cta {
+  padding: 120px 60px;
+  background: var(--black);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.booking-cta::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(ellipse, rgba(var(--deep-blue-rgb),0.6) 0%, transparent 70%);
+  pointer-events: none;
+}
+.booking-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+  position: relative;
+}
+.booking-cta-sub {
+  font-size: 0.9rem;
+  color: var(--light-grey);
+  margin-bottom: 50px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ─────────────────────────────────────
+   PAGE 2: SERVICES
+───────────────────────────────────── */
+.page-hero {
+  padding: 80px 60px 40px;
+  background: linear-gradient(to bottom, var(--navy), var(--black));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80') center/cover;
+  opacity: 0.06;
+}
+.page-hero-content { position: relative; z-index: 2; }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.page-hero p { font-size: 0.9rem; color: var(--light-grey); max-width: 500px; margin: 0 auto; }
+.booking-hero-note {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(1.8rem, 4vw, 3.5rem) !important;
+  line-height: 1.15;
+}
+
+.services-main { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+.services-main-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  max-width: 840px;
+  margin: 0 auto 56px;
+}
+.service-main-card-wide { grid-column: span 2; }
+.service-main-card {
+  background: var(--dark);
+  padding: 35px 31px;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.service-main-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.service-main-card:hover::after { transform: scaleX(1); }
+.service-main-card:hover { background: var(--dark-mid); }
+.service-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(var(--gold-rgb),0.3);
+  padding: 5px 12px;
+  margin-bottom: 14px;
+}
+.service-main-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.service-main-price {
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+.service-main-desc { font-size: 0.84rem; color: var(--light-grey); line-height: 1.8; margin-bottom: 20px; }
+.service-includes { list-style: none; }
+.service-includes li {
+  font-size: 0.78rem;
+  color: rgba(var(--white-rgb),0.7);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(var(--white-rgb),0.05);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.service-includes li::before {
+  content: '';
+  width: 6px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.addons-section { margin-top: 20px; }
+.addons-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 30px;
+}
+.addon-card {
+  background: var(--dark);
+  padding: 28px 24px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.addon-card:hover { background: var(--dark-mid); }
+.addon-dot {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.addon-name { font-size: 0.82rem; color: var(--white); font-weight: 500; }
+
+/* ─────────────────────────────────────
+   PAGE 3: PRICING
+───────────────────────────────────── */
+.pricing-main { padding: 80px 60px; max-width: 1100px; margin: 0 auto; }
+.pricing-table-wrap { overflow-x: auto; margin-bottom: 60px; }
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+.pricing-table th {
+  padding: 16px 24px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.2);
+  text-align: left;
+}
+.pricing-table th:not(:first-child) { text-align: center; }
+.pricing-table td {
+  padding: 20px 24px;
+  font-size: 0.84rem;
+  color: rgba(var(--white-rgb),0.8);
+  border-bottom: 1px solid rgba(var(--white-rgb),0.05);
+  transition: var(--transition);
+}
+.pricing-table td:not(:first-child) { text-align: center; }
+.pricing-table tr:hover td { background: rgba(var(--gold-rgb),0.04); color: var(--white); }
+.pricing-table .service-name {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.88rem;
+}
+.price-val {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.club-pricing {
+  margin-top: -10px;
+  margin-bottom: 0;
+}
+.club-pricing-wrap {
+  overflow-x: auto;
+  background: var(--dark);
+  border: 1px solid rgba(var(--gold-rgb),0.18);
+}
+.club-pricing-table {
+  min-width: 880px;
+  background: rgba(var(--deep-blue-rgb),0.25);
+}
+.club-pricing-table th {
+  background: rgba(var(--gold-rgb),0.04);
+}
+.club-pricing-table .vehicle-group {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 0.12em;
+}
+.pricing-table th.club-service-col,
+.pricing-table td.club-service-type {
+  text-align: left;
+}
+.club-pricing-table .package-group {
+  vertical-align: top;
+}
+.club-pricing-note {
+  margin-top: 18px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+}
+
+.addons-pricing { margin-top: 60px; }
+.addons-pricing-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+.addon-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.addon-pricing-item {
+  background: var(--dark);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+.addon-pricing-item:hover { background: var(--dark-mid); }
+.addon-pricing-name { font-size: 0.82rem; color: rgba(var(--white-rgb),0.85); }
+.addon-pricing-price { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); font-weight: 600; }
+
+.pricing-notes {
+  margin-top: 50px;
+  background: var(--dark);
+  padding: 36px 40px;
+  border-left: 2px solid var(--gold);
+}
+.pricing-notes h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.pricing-notes ul { list-style: none; }
+.pricing-notes li {
+  font-size: 0.8rem;
+  color: var(--light-grey);
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pricing-notes li::before {
+  content: '+';
+  color: var(--gold);
+  font-weight: 700;
+}
+.services-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 60px;
+}
+
+/* -------------------------------------------------
+   PAGE 4: BOOKING
+------------------------------------------------- */
+.booking-main { padding: 80px 60px; max-width: 1000px; margin: 0 auto; }
+.booking-intro { text-align: center; margin-bottom: 50px; }
+.setmore-booking-panel {
+  background: var(--dark);
+  border: 1px solid rgba(var(--gold-rgb),0.16);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+/* ─────────────────────────────────────
+   PAGE 5: GALLERY
+───────────────────────────────────── */
+.gallery-main { padding: 80px 60px; max-width: 1300px; margin: 0 auto; }
+.gallery-filter {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  background: var(--dark);
+  color: var(--light-grey);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 50%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover .gallery-item-img { transform: scale(1.06); }
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--deep-blue-rgb),0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.gallery-item:hover .gallery-item-overlay { background: rgba(var(--blue-rgb),0.7); }
+.gallery-item-label {
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: var(--transition);
+  text-align: center;
+  padding: 10px;
+}
+.gallery-item:hover .gallery-item-label { opacity: 1; }
+.gallery-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  z-index: 2;
+}
+.badge-before { background: rgba(var(--black-rgb),0.8); color: var(--light-grey); }
+.badge-after { background: var(--gold); color: var(--black); }
+
+/* ─────────────────────────────────────
+   PAGE 7: ABOUT
+───────────────────────────────────── */
+.about-story {
+  padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80') center/cover;
+  position: relative;
+}
+.about-img::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 80%; height: 80%;
+  border: 1px solid rgba(var(--gold-rgb),0.3);
+  z-index: -1;
+}
+.about-img-badge {
+  position: absolute;
+  bottom: 30px; left: -30px;
+  background: var(--gold);
+  color: var(--black);
+  padding: 20px 24px;
+  text-align: center;
+}
+.about-img-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.about-img-badge-text { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.about-content {}
+.about-text {
+  font-size: 0.88rem;
+  color: rgba(var(--white-rgb),0.75);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.about-mission {
+  background: var(--dark);
+  padding: 36px 32px;
+  border-left: 2px solid var(--gold);
+  margin: 36px 0;
+}
+.about-mission-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.about-mission-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--white);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.about-values {
+  padding: 80px 60px;
+  background: var(--off-black);
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1100px;
+  margin: 50px auto 0;
+}
+.value-card {
+  background: var(--dark);
+  padding: 44px 36px;
+  text-align: center;
+  transition: var(--transition);
+}
+.value-card:hover { background: var(--dark-mid); transform: translateY(-4px); }
+.value-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(var(--gold-rgb),0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.value-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); margin-bottom: 12px; font-weight: 600; }
+.value-text { font-size: 0.8rem; color: var(--light-grey); line-height: 1.8; }
+
+/* ─────────────────────────────────────
+   PAGE 8: CONTACT
+───────────────────────────────────── */
+.contact-main {
+  padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+}
+.contact-info {}
+.contact-info-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.contact-info-sub { font-size: 0.84rem; color: var(--light-grey); line-height: 1.8; margin-bottom: 44px; }
+.contact-items { display: flex; flex-direction: column; gap: 2px; }
+.contact-item {
+  background: var(--dark);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.contact-item:hover { background: var(--dark-mid); }
+.contact-icon {
+  width: 42px; height: 42px;
+  background: rgba(var(--gold-rgb),0.1);
+  border: 1px solid rgba(var(--gold-rgb),0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+.contact-item-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.contact-item-value { font-size: 0.84rem; color: var(--white); overflow-wrap: anywhere; }
+
+.wa-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--blue);
+  color: var(--white);
+  padding: 16px 28px;
+  margin-top: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.wa-button:hover { background: var(--cyan); transform: translateX(4px); }
+
+.contact-form-wrap {
+  background: var(--dark);
+  padding: 50px 44px;
+}
+.contact-form-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.form-control {
+  width: 100%;
+  background: var(--off-black);
+  border: 1px solid rgba(var(--white-rgb),0.08);
+  color: var(--white);
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  transition: var(--transition);
+  outline: none;
+  border-radius: 0;
+}
+.form-control:focus { border-color: var(--gold); background: var(--black); }
+.form-control::placeholder { color: var(--grey); }
+textarea.form-control { height: 130px; resize: vertical; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--off-black);
+  border-top: 1px solid rgba(var(--gold-rgb),0.15);
+  padding: 60px 60px 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+.footer-brand {}
+.footer-logo-main {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo-sub {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+.footer-tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--light-grey);
+  margin-bottom: 20px;
+}
+.footer-col-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col-links li a, .footer-col-links li span {
+  font-size: 0.78rem;
+  color: var(--light-grey);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  overflow-wrap: anywhere;
+}
+.footer-col-links li a:hover, .footer-col-links li span:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(var(--white-rgb),0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-copy { font-size: 0.72rem; color: var(--grey); }
+.footer-legal { font-size: 0.7rem; color: var(--grey); }
+.footer-gold { color: var(--gold); }
+
+/* ─── ANIMATIONS ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .ba-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .about-story { grid-template-columns: 1fr; gap: 40px; }
+  .about-img-wrap { max-width: 500px; }
+  .contact-main { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  header { padding: 0 20px; }
+  nav { display: none; }
+  .hamburger { display: flex; }
+  
+  .hero-content { padding: 0 24px; }
+  .hero-scroll { display: none; }
+  .hero h1 { font-size: 2.8rem; }
+
+  .why-section, .services-preview, .before-after,
+  .testimonials-preview, .booking-cta, .services-main,
+  .pricing-main, .booking-main, .gallery-main,
+  .about-story, .about-values, .contact-main { padding: 60px 24px; }
+
+  .services-grid, .services-main-grid { grid-template-columns: 1fr; }
+  .service-main-card-wide { grid-column: auto; }
+  .addons-grid, .addon-pricing-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .page-hero { padding: 90px 24px 30px; }
+  .contact-form-wrap { padding: 32px 24px; }
+
+  .club-pricing-wrap { overflow: visible; background: transparent; border: 0; }
+  .club-pricing-table { display: block; min-width: 0; background: transparent; }
+  .club-pricing-table thead { display: none; }
+  .club-pricing-table tbody {
+    display: grid;
+    gap: 14px;
+  }
+  .club-pricing-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 20px;
+    background: var(--dark);
+    border: 1px solid rgba(var(--gold-rgb),0.18);
+  }
+  .club-pricing-table tr::before {
+    content: attr(data-mobile-title);
+    grid-column: 1 / -1;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(var(--gold-rgb),0.18);
+  }
+  .club-pricing-table td.club-package,
+  .club-pricing-table td.club-service-type {
+    display: none;
+  }
+  .club-pricing-table td[data-label] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+  .club-pricing-table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-grey);
+  }
+  .club-pricing-table tr:hover td { background: transparent; }
+  .club-pricing-table .price-val { font-size: 1.05rem; }
+
+  .services-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .services-actions .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero-cta { flex-direction: column; }
+  .section-title { font-size: 1.8rem; }
+  .page-hero h1 { font-size: 2.1rem; line-height: 1.15; }
+  .services-main { padding-left: 18px; padding-right: 18px; }
+  .service-main-card { padding: 28px 22px; }
+  .service-main-title { font-size: 1.55rem; }
+  .club-pricing-table tr { grid-template-columns: 1fr; padding: 18px; }
+  .addon-pricing-item { padding: 20px; gap: 16px; }
+  .addon-pricing-name { min-width: 0; }
+  .addon-pricing-price { flex-shrink: 0; }
+  .pricing-notes { padding: 28px 22px; }
+  .addons-grid, .addon-pricing-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; width: 50%; }
+  .floating-book { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a class="logo" onclick="showPage('home')">
+    <img src="Gihon Auto Spa &amp; Detail Logo(Transparent  Background).png" alt="Gihon Auto Spa &amp; Detail" class="logo-img">
+    <div class="logo-text">
+      <span class="logo-main">Gihon Auto Spa</span>
+      <span class="logo-sub">&amp; Detail</span>
+    </div>
+  </a>
+  <nav id="main-nav">
+    <a onclick="showPage('home')" data-page="home" class="active">Home</a>
+    <a onclick="showPage('services')" data-page="services">Services &amp; Pricing</a>
+    <a onclick="showPage('booking')" data-page="booking">Booking</a>
+    <a onclick="showPage('gallery')" data-page="gallery">Gallery</a>
+    <a onclick="showPage('contact')" data-page="contact">Contact Us</a>
+    <a onclick="showPage('booking')" class="btn-book-nav">Book Now</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');closeMenu()">Home</a>
+  <a onclick="showPage('services');closeMenu()">Services &amp; Pricing</a>
+  <a onclick="showPage('booking');closeMenu()">Booking</a>
+  <a onclick="showPage('gallery');closeMenu()">Gallery</a>
+  <a onclick="showPage('contact');closeMenu()">Contact Us</a>
+  <a onclick="showPage('booking');closeMenu()" class="btn-book-mobile">Book Now</a>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/12462865244" target="_blank" class="floating-wa" title="WhatsApp Us">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Mobile Car Care In Barbados</div>
+      <h1>Quality.<br><em>Precision.</em><br>Perfection.</h1>
+      <p class="hero-sub">Convenient, professional vehicle maintenance for busy people who value clean, protected vehicles.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" onclick="showPage('booking')">Book Now</a>
+        <a class="btn btn-outline" onclick="showPage('services')">View Services</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <div class="about-story">
+    <div class="about-img-wrap fade-in">
+      <div class="about-img"></div>
+
+    </div>
+    <div class="about-content fade-in fade-in-delay-1">
+      <span class="section-label">More Than A Car Wash</span>
+      <div class="gold-line-left"></div>
+      <h2 class="section-title">Mobile Vehicle Care<br>For Busy Barbadians</h2>
+      <p class="about-text">Gihon Auto Spa & Detail is a professional mobile vehicle maintenance service for people who value convenience, cleanliness, and long-term vehicle care. We help Barbadian vehicle owners protect, maintain, and enjoy their vehicles with dependable car care delivered where they are.</p>
+      <p class="about-text">Our focus is consistent service, professional standards, and a detail-driven finish that keeps your vehicle looking sharp between every appointment. This is car care built around your schedule, guided by Quality. Precision. Perfection.</p>
+      <a class="btn btn-primary" onclick="showPage('booking')">Book With Us</a>
+    </div>
+  </div>
+
+  <section class="about-values">
+    <div class="why-header fade-in">
+      <span class="section-label">Our Foundation</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Mission, Vision &amp; Positioning</h2>
+      <p class="section-subtitle" style="margin:0 auto;">The purpose and promise behind every mobile car care appointment.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-in fade-in-delay-1">
+        <div class="value-num">01</div>
+        <div class="value-title">Mission Statement</div>
+        <p class="value-text">To provide convenient, professional, and consistent mobile car care services that help Barbadian vehicle owners protect, maintain, and enjoy their vehicles.</p>
+      </div>
+      <div class="value-card fade-in fade-in-delay-2">
+        <div class="value-num">02</div>
+        <div class="value-title">Vision Statement</div>
+        <p class="value-text">To become one of Barbados' most trusted mobile car care subscription brands, known for Quality. Precision. Perfection.</p>
+      </div>
+      <div class="value-card fade-in fade-in-delay-3">
+        <div class="value-num">03</div>
+        <div class="value-title">Brand Positioning</div>
+        <p class="value-text">Gihon Auto Spa &amp; Detail is not "just a car wash." It is a professional mobile vehicle maintenance service for busy people who value convenience, cleanliness, and long-term vehicle care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-section">
+    <div class="why-header fade-in">
+      <span class="section-label">Why Gihon</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Why Choose Us</h2>
+      <p class="section-subtitle" style="margin:0 auto;">We bring convenient, consistent, professional-grade care to your vehicle wherever you are.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in fade-in-delay-1">
+        <div class="why-number">01</div>
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        <div class="why-title">Premium Quality</div>
+        <p class="why-text">Only the finest detailing products and professional-grade equipment are used on your vehicle.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-2">
+        <div class="why-number">02</div>
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <div class="why-title">On-Time Service</div>
+        <p class="why-text">We value your time. Every appointment is honored with punctuality and efficiency.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-3">
+        <div class="why-number">03</div>
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="why-title">Trusted & Reliable</div>
+        <p class="why-text">A track record of satisfied clients across Barbados who trust us with their prized vehicles.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-4">
+        <div class="why-number">04</div>
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <div class="why-title">Expert Team</div>
+        <p class="why-text">Our skilled detailers bring passion and expertise to every job, treating your car like their own.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-main">Gihon Auto Spa</div>
+        <span class="footer-logo-sub">& Detail · Barbados</span>
+        <p class="footer-tagline">"Quality. Precision. Perfection."</p>
+        <p style="font-size:0.78rem;color:var(--grey);line-height:1.8;">Professional mobile vehicle maintenance for busy Barbadian drivers who value convenience, cleanliness, and long-term care.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-col-links">
+          <li><span onclick="showPage('home')">Home</span></li>
+          <li><span onclick="showPage('services')">Services</span></li>
+          
+          <li><span onclick="showPage('booking')">Book Now</span></li>
+          
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-col-links">
+          <li><span onclick="showPage('gallery')">Gallery</span></li>
+          
+          <li><span onclick="showPage('contact')">Contact Us</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-col-links">
+          <li><a href="tel:+12460000000">+1 (246) 000-0000</a></li>
+          <li><a href="mailto:gihonautospadetail@gmail.com">gihonautospadetail@gmail.com</a></li>
+          <li><span>Barbados, Caribbean</span></li>
+          <li><a href="https://wa.me/12462865244" target="_blank">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 <span class="footer-gold">Gihon Auto Spa & Detail</span>. All rights reserved.</span>
+      <span class="footer-legal">Barbados · Quality. Precision. Perfection.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE: SERVICES
+═══════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-label">Services &amp; Pricing</span>
+      <div class="gold-line"></div>
+      <h1>Services &amp; Pricing</h1>
+      <p>Professional mobile car care packages tailored to help you protect, maintain, and enjoy your vehicle.</p>
+    </div>
+  </div>
+
+  <div class="services-main">
+    <div class="services-main-grid">
+      <div class="service-main-card fade-in">
+        <span class="service-badge">Basic</span>
+        <h3 class="service-main-title">Exterior Wash</h3>
+        <div class="service-main-price">Car: $25 · SUV &amp; Pickup: $30</div>
+        <p class="service-main-desc">A complete exterior cleaning including hand wash, rinse, and drying to restore your vehicle's shine.</p>
+        <ul class="service-includes">
+          <li>Hand wash &amp; rinse</li>
+          <li>Wheel &amp; tire clean</li>
+          <li>Window exterior clean</li>
+          <li>Hand dry &amp; finish</li>
+        </ul>
+        <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
+      </div>
+      <div class="service-main-card fade-in fade-in-delay-1">
+        <span class="service-badge">Basic</span>
+        <h3 class="service-main-title">Interior Cleaning</h3>
+        <div class="service-main-price">Car: $45 · SUV &amp; Pickup: $50</div>
+        <p class="service-main-desc">Thorough vacuuming, surface wipe-down, and interior refresh to leave your cabin clean and comfortable.</p>
+        <ul class="service-includes">
+          <li>Deep vacuum (seats, floors, trunk)</li>
+          <li>Dashboard &amp; console wipe-down</li>
+          <li>Interior window clean</li>
+          <li>Door panel cleaning</li>
+        </ul>
+        <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
+      </div>
+      <div class="service-main-card fade-in fade-in-delay-1">
+        <span class="service-badge">Standard</span>
+        <h3 class="service-main-title">Wash &amp; Vacuum Only</h3>
+        <div class="service-main-price">Car: $40 · SUV &amp; Pickup: $50</div>
+        <p class="service-main-desc">Exterior wash and interior vacuum only.</p>
+        <ul class="service-includes">
+          <li>Exterior hand wash &amp; rinse</li>
+          <li>Interior vacuum</li>
+        </ul>
+        <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
+      </div>
+      <div class="service-main-card fade-in fade-in-delay-2">
+        <span class="service-badge">Premium</span>
+        <h3 class="service-main-title">Premium Detail</h3>
+        <div class="service-main-price">Car: $65 · SUV &amp; Pickup: $75</div>
+        <p class="service-main-desc">Thorough Interior + Exterior Vacuum &amp; Clean and refresh. Renew your entire ride.</p>
+        <ul class="service-includes">
+          <li>Full exterior wash &amp; dry</li>
+          <li>Complete interior vacuum &amp; wipe</li>
+          <li>Tire shine application</li>
+          <li>All windows cleaned inside &amp; out</li>
+        </ul>
+        <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
+      </div>
+      <div class="service-main-card service-main-card-wide fade-in fade-in-delay-3">
+        <span class="service-badge">Deluxe</span>
+        <h3 class="service-main-title">Deluxe Detail</h3>
+        <div class="service-main-price">Car: $140 · SUV &amp; Pickup: $160 · Includes Premium Finish</div>
+        <p class="service-main-desc">Complete interior and exterior detailing for a like-new finish. Our most comprehensive service — deep cleaning of both interior and exterior for a complete transformation.</p>
+        <ul class="service-includes">
+          <li>Premium exterior wash &amp; clay bar prep</li>
+          <li>Hand wax &amp; paint protection</li>
+          <li>Full interior deep clean</li>
+          <li>Leather/fabric conditioning</li>
+          <li>Tire &amp; trim dressing</li>
+          <li>Engine bay wipe-down</li>
+          <li>Premium finish included</li>
+        </ul>
+        <div style="margin-top:28px;"><a class="btn btn-primary" onclick="showPage('booking')">Book Now</a></div>
+      </div>
+    </div>
+
+    <div class="club-pricing fade-in">
+      <span class="section-label">Monthly Maintenance</span>
+      <div class="gold-line-left"></div>
+      <h2 class="addons-pricing-title">Gihon Car Care Club</h2>
+      <div class="club-pricing-wrap">
+        <table class="pricing-table club-pricing-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Package</th>
+              <th rowspan="2" class="club-service-col">Service</th>
+              <th colspan="2" class="vehicle-group">Sedan</th>
+              <th colspan="2" class="vehicle-group">SUV/Pickup</th>
+            </tr>
+            <tr>
+              <th>Monthly (1 Visit)</th>
+              <th>Bi-Weekly (2 Visits)</th>
+              <th>Monthly (1 Visit)</th>
+              <th>Bi-Weekly (2 Visits)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-mobile-title="Basic · Interior Cleaning">
+              <td class="service-name package-group club-package" rowspan="2">Basic</td>
+              <td class="service-name club-service-type">Int. Cleaning</td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$40.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$70.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$45.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$80.00</span></td>
+            </tr>
+            <tr data-mobile-title="Basic · Exterior Wash">
+              <td class="service-name club-service-type">Ext. Wash</td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$20.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$35.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$25.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$45.00</span></td>
+            </tr>
+            <tr data-mobile-title="Standard">
+              <td class="service-name club-package">Standard</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$50.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$95.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$60.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$110.00</span></td>
+            </tr>
+            <tr data-mobile-title="Premium">
+              <td class="service-name club-package">Premium</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$60.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$110.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$68.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$130.00</span></td>
+            </tr>
+            <tr data-mobile-title="Deluxe">
+              <td class="service-name club-package">Deluxe</td>
+              <td class="club-service-type"></td>
+              <td data-label="Sedan · Monthly"><span class="price-val">$125.00</span></td>
+              <td data-label="Sedan · Bi-Weekly"><span class="price-val">$240.00</span></td>
+              <td data-label="SUV/Pickup · Monthly"><span class="price-val">$145.00</span></td>
+              <td data-label="SUV/Pickup · Bi-Weekly"><span class="price-val">$275.00</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="club-pricing-note">All prices are monthly</p>
+    </div>
+
+    <div class="addons-pricing fade-in" style="margin-top:70px;">
+      <span class="section-label">Optional Upgrades</span>
+      <div class="gold-line-left"></div>
+      <h2 class="addons-pricing-title">Add-On Services</h2>
+      <div class="addon-pricing-grid">
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Door &amp; Dash Protectant</span><span class="addon-pricing-price">$20</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Seat Shampoo</span><span class="addon-pricing-price">$60</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Wax / Polish</span><span class="addon-pricing-price">$40</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Engine Bay Cleaning</span><span class="addon-pricing-price">$80–$150</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Headlight Restoration</span><span class="addon-pricing-price">$40</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Pet Hair Removal</span><span class="addon-pricing-price">$35</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Extra Dirty Vehicles</span><span class="addon-pricing-price">+$20</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Large Vehicles / Vans</span><span class="addon-pricing-price">+$20</span></div>
+        <div class="addon-pricing-item"><span class="addon-pricing-name">Mobile Service</span><span class="addon-pricing-price">+$10</span></div>
+      </div>
+      <div style="text-align:center;margin-top:34px;">
+        <a class="btn btn-primary" onclick="showPage('booking')">Book Now</a>
+      </div>
+    </div>
+
+    <div class="pricing-notes fade-in" style="margin-top:50px;">
+      <h3>Important Notes</h3>
+      <ul>
+        <li>All prices are in Barbados Dollars (BBD)</li>
+        <li>Surcharges apply for extra dirty vehicles (+$20)</li>
+        <li>Large vehicles (vans, trucks) incur additional charge (+$20)</li>
+        <li>Mobile service available islandwide (+$10)</li>
+        <li>Engine restoration pricing depends on vehicle condition ($80–$150)</li>
+        <li>Prices may vary — contact us for a custom quote</li>
+      </ul>
+    </div>
+
+    <div class="services-actions fade-in">
+      <a class="btn btn-primary" onclick="showPage('booking')">Book Your Service</a>
+      <a class="btn btn-outline" onclick="showPage('contact')">Request a Quote</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-main">Gihon Auto Spa</div>
+        <span class="footer-logo-sub">& Detail · Barbados</span>
+        <p class="footer-tagline">"Quality. Precision. Perfection."</p>
+      </div>
+      <div><div class="footer-col-title">Quick Links</div><ul class="footer-col-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('services')">Services</span></li><li><span onclick="showPage('booking')">Book Now</span></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-col-links"><li><span onclick="showPage('gallery')">Gallery</span></li><li><span onclick="showPage('contact')">Contact Us</span></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-col-links"><li><a href="tel:+12460000000">+1 (246) 000-0000</a></li><li><a href="mailto:gihonautospadetail@gmail.com">gihonautospadetail@gmail.com</a></li><li><span>Barbados, Caribbean</span></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 <span class="footer-gold">Gihon Auto Spa & Detail</span>. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE: BOOKING
+═══════════════════════════════════ -->
+<div class="page" id="page-booking">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-label">Reserve Your Spot</span>
+      <div class="gold-line"></div>
+      <h1 class="booking-hero-note">Choose your service, date, and time through our secure booking portal.</h1>
+    </div>
+  </div>
+
+  <div class="booking-main setmore-booking-main">
+    <div class="setmore-booking-panel fade-in">
+      <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+      <button id="Anywhere_button_iframe" class="anywhere-book-now-button" style=" background-color: var(--gold); color: var(--black); border: none; padding: 18px 27px; font-size: 21px; font-weight: 600; border-radius: 9px; cursor: pointer; " data-booking-url="https://gihonautospadetail.setmore.com" data-new-tab="false"> Book now </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-logo-main">Gihon Auto Spa</div><span class="footer-logo-sub">& Detail · Barbados</span><p class="footer-tagline">"Quality. Precision. Perfection."</p></div>
+      <div><div class="footer-col-title">Quick Links</div><ul class="footer-col-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('services')">Services</span></li><li><span onclick="showPage('booking')">Book Now</span></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-col-links"><li><span onclick="showPage('gallery')">Gallery</span></li><li><span onclick="showPage('contact')">Contact Us</span></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-col-links"><li><a href="tel:+12460000000">+1 (246) 000-0000</a></li><li><a href="mailto:gihonautospadetail@gmail.com">gihonautospadetail@gmail.com</a></li><li><span>Barbados, Caribbean</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 <span class="footer-gold">Gihon Auto Spa & Detail</span>. All rights reserved.</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE: GALLERY
+═══════════════════════════════════ -->
+<div class="page" id="page-gallery">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-label">Our Work</span>
+      <div class="gold-line"></div>
+      <h1>Gallery</h1>
+      <p>Real results from real vehicles. See the transformations we deliver every day.</p>
+    </div>
+  </div>
+
+  <div class="gallery-main">
+    <div class="gallery-filter">
+      <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Work</button>
+      <button type="button" class="filter-btn" data-filter="exterior" aria-pressed="false">Exterior</button>
+      <button type="button" class="filter-btn" data-filter="interior" aria-pressed="false">Interior</button>
+      <button type="button" class="filter-btn" data-filter="before-after" aria-pressed="false">Before &amp; After</button>
+      <button type="button" class="filter-btn" data-filter="full-detail" aria-pressed="false">Full Detail</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" data-category="before-after">
+        <img class="gallery-item-img" src="Gihon Auto Spa &amp; Detail Website/Gallery/Driver Front Before.jpg" alt="Driver front seat before detailing" loading="lazy" decoding="async">
+        <div class="gallery-item-overlay"><div class="gallery-item-label">Driver Front<br>Before</div></div>
+      </div>
+      <div class="gallery-item" data-category="before-after">
+        <img class="gallery-item-img" src="Gihon Auto Spa &amp; Detail Website/Gallery/Driver Front After.jpg" alt="Driver front seat after detailing" loading="lazy" decoding="async">
+        <div class="gallery-item-overlay"><div class="gallery-item-label">Driver Front<br>After</div></div>
+      </div>
+      <div class="gallery-item" data-category="before-after">
+        <img class="gallery-item-img" src="Gihon Auto Spa &amp; Detail Website/Gallery/Driver Rear Before.jpg" alt="Driver rear seat before detailing" loading="lazy" decoding="async">
+        <div class="gallery-item-overlay"><div class="gallery-item-label">Driver Rear<br>Before</div></div>
+      </div>
+      <div class="gallery-item" data-category="before-after">
+        <img class="gallery-item-img" src="Gihon Auto Spa &amp; Detail Website/Gallery/Driver Rear After.jpg" alt="Driver rear seat after detailing" loading="lazy" decoding="async">
+        <div class="gallery-item-overlay"><div class="gallery-item-label">Driver Rear<br>After</div></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:60px;" class="fade-in">
+      <a class="btn btn-primary" onclick="showPage('booking')">Book Your Detail Today</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-logo-main">Gihon Auto Spa</div><span class="footer-logo-sub">& Detail · Barbados</span><p class="footer-tagline">"Quality. Precision. Perfection."</p></div>
+      <div><div class="footer-col-title">Quick Links</div><ul class="footer-col-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('services')">Services</span></li><li><span onclick="showPage('booking')">Book Now</span></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-col-links"><li><span onclick="showPage('gallery')">Gallery</span></li><li><span onclick="showPage('contact')">Contact Us</span></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-col-links"><li><a href="tel:+12460000000">+1 (246) 000-0000</a></li><li><a href="mailto:gihonautospadetail@gmail.com">gihonautospadetail@gmail.com</a></li><li><span>Barbados, Caribbean</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 <span class="footer-gold">Gihon Auto Spa & Detail</span>. All rights reserved.</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-label">Get In Touch</span>
+      <div class="gold-line"></div>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Reach out to book, ask a question, or get a custom quote.</p>
+    </div>
+  </div>
+
+  <div class="contact-main">
+    <div class="contact-info fade-in">
+      <h2 class="contact-info-title">Reach Out to Us</h2>
+      <p class="contact-info-sub">We're available by phone, WhatsApp, or email. We are happy to help with bookings, service questions, and custom quotes for any vehicle.</p>
+
+      <div class="contact-items">
+        <a href="tel:+12462865244" class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value">+1 (246) 286-5244</div>
+          </div>
+        </a>
+        <a href="mailto:gihonautospadetail@gmail.com" class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">gihonautospadetail@gmail.com</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Service Area</div>
+            <div class="contact-item-value">Barbados— Island Wide</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Hours</div>
+            <div class="contact-item-value">Sunday: 7:30 AM – 3:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/12462865244" target="_blank" class="wa-button">
+        <svg viewBox="0 0 24 24" fill="var(--white)" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="contact-form-wrap fade-in fade-in-delay-1">
+      <h3 class="contact-form-title">Send Us a Message</h3>
+      <form id="contact-form" onsubmit="handleForm(event)">
+        <input type="hidden" name="to_email" value="gihonautospadetail@gmail.com">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" name="from_name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" name="phone" placeholder="+1 (246) 000-0000" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" name="reply_to" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Interested In</label>
+          <select class="form-control" name="service_interested" style="cursor:pointer;">
+            <option value="" style="background:var(--dark);">Select a service...</option>
+            <option style="background:var(--dark);">Exterior Wash</option>
+            <option style="background:var(--dark);">Interior Cleaning</option>
+            <option style="background:var(--dark);">Standard Detailing</option>
+            <option style="background:var(--dark);">Full Detailing</option>
+            <option style="background:var(--dark);">Extra Service</option>
+            <option style="background:var(--dark);">Custom Quote</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" name="message" placeholder="Tell us about your vehicle and what you need..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">Send Message</button>
+      </form>
+      <div id="form-success" style="display:none;margin-top:20px;background:rgba(var(--gold-rgb),0.1);border:1px solid rgba(var(--gold-rgb),0.3);padding:20px;text-align:center;">
+        <p style="color:var(--gold);font-size:0.84rem;">✓ Message sent! We'll be in touch shortly.</p>
+      </div>
+      <div id="form-error" style="display:none;margin-top:20px;background:rgba(var(--gold-dark-rgb),0.16);border:1px solid rgba(var(--gold-rgb),0.35);padding:20px;text-align:center;">
+        <p style="color:var(--gold-light);font-size:0.84rem;">Message could not be sent. Please try again or contact us by WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-logo-main">Gihon Auto Spa</div><span class="footer-logo-sub">& Detail · Barbados</span><p class="footer-tagline">"Quality. Precision. Perfection."</p><p style="font-size:0.78rem;color:var(--grey);line-height:1.8;">Professional mobile vehicle maintenance for busy Barbadian drivers who value convenience, cleanliness, and long-term care.</p></div>
+      <div><div class="footer-col-title">Quick Links</div><ul class="footer-col-links"><li><span onclick="showPage('home')">Home</span></li><li><span onclick="showPage('services')">Services</span></li><li><span onclick="showPage('booking')">Book Now</span></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-col-links"><li><span onclick="showPage('gallery')">Gallery</span></li><li><span onclick="showPage('contact')">Contact Us</span></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-col-links"><li><a href="tel:+12460000000">+1 (246) 000-0000</a></li><li><a href="mailto:gihonautospadetail@gmail.com">gihonautospadetail@gmail.com</a></li><li><span>Barbados, Caribbean</span></li><li><a href="https://wa.me/12462865244" target="_blank">WhatsApp Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 <span class="footer-gold">Gihon Auto Spa & Detail</span>. All rights reserved.</span>
+      <span class="footer-legal">Quality. Precision. Perfection.</span>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
